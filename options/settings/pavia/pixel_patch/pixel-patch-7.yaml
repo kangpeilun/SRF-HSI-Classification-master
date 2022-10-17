@@ -1,0 +1,26 @@
+# 使用pixel-patch数据处理方法 进行训练
+# 训练前模型配置
+data_name: 'Pavia'   # ['Indian', 'Pavia', 'Houston']
+train: True
+seed: 2
+device: 'cuda:0'
+epochs: 100
+batch_size: 2
+learn_rate: 5e-4
+weight_decay: 0
+scheduler_gamma: 0.9
+scheduler_step_size: 5
+# 模型保存
+save_log: False
+log_dir: 'log'
+exp_name_dir: 'pixel-patch-7'   # 只需要更改该项即可
+result_dir: 'result'
+use_tensorboard: True
+tensorboard_dir: 'train_log'
+# 是否启用训练时进行验证
+use_val_step: True
+val_step: 1
+# 数据加载方式
+mode: 'pixel_patch'
+band_patch: 1
+pixel_patch: 7

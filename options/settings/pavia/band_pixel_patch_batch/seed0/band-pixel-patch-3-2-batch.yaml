@@ -1,0 +1,47 @@
+# 使用band-patch-1数据处理方法 进行训练
+# band-patch-1 后面的数字代表 patch 数
+# 训练前模型配置
+data_name: 'Pavia'   # ['Indian', 'Pavia', 'Houston']
+train: True
+seed: 0
+device: 'cuda:0'
+epochs: 200
+batch_size: 25
+swin_type: 'tiny'
+process_data: 'batch'
+# 学习率调整
+learn_rate: 5e-4
+weight_decay: 0
+scheduler_name: 'StepLR'
+scheduler_gamma: 0.2
+scheduler_step_size: 5
+cawr_t_0: 10
+cawr_t_mult: 2
+# 模型保存
+save_log: False
+log_dir: 'pavia_log'
+exp_name_dir: 'band-pixel-patch-3-2-batch-seed0'   # 只需要更改该项即可
+result_dir: 'result'
+use_tensorboard: True
+tensorboard_dir: 'train_log'
+# 是否启用训练时进行验证
+use_val_step: True
+val_step: 2
+# 是否使用early stopping
+use_early_stopping: False
+early_stopping: 3
+# 数据加载方式
+mode: 'band_pixel_patch'
+band_patch: 3
+pixel_patch: 2
+# 数据降维
+use_dimension_reduction: False   # ['FA', 'PCA']
+dimension_mode: FA
+numcomponents: 3
+# 残差网络 和 特征金字塔
+use_fp: False
+fp_name: 'ASPP'
+use_resblock: True
+# 选择损失函数
+loss_function: 'CE_loss'   # ['CE_loss', 'focal_loss']
+alpha_mode: 'handle'
